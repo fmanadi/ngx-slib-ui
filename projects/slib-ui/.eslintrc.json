@@ -1,0 +1,59 @@
+{
+  "extends": "../../.eslintrc.json",
+  "ignorePatterns": [
+    "!**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "plugins": ["@angular-eslint"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:prettier/recommended",
+        "plugin:@angular-eslint/recommended"
+      ],
+      "parserOptions": {
+        "ecmaVersion": 2020, // Allows for the parsing of modern ECMAScript features
+        "sourceType": "module", // Allows for the use of imports
+        "project": [
+          "projects/slib-ui/tsconfig.lib.json",
+          "projects/slib-ui/tsconfig.spec.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "env": {
+        "es6": true
+      },
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "sl",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "sl",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/component-class-suffix": "off"
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}
